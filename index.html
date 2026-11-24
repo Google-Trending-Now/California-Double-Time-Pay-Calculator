@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>California Double Time Pay Calculator — CA 1.5x &amp; 2x Pay</title>
+  <meta name="description" content="Free California double time pay calculator for hourly workers and HR. Use this California overtime and double time calculator for daily, weekly, and 7th-day pay." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://example.com/california-double-time-pay-calculator" />
+
+  <!-- Open Graph / Social Meta Tags -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="California Wage Calculator" />
+  <meta property="og:title" content="California Double Time Pay Calculator — CA 1.5x &amp; 2x Pay" />
+  <meta property="og:description" content="Calculate regular (1.0x), overtime (1.5x), and double time (2.0x) wages under California Labor Code § 510 for single shifts and full 7-day workweeks." />
+  <meta property="og:url" content="https://example.com/california-double-time-pay-calculator" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="California Double Time Pay Calculator — CA 1.5x &amp; 2x Pay" />
+  <meta name="twitter:description" content="Instant California overtime and double time calculator with daily, weekly, and 7th consecutive workday rules under Labor Code § 510." />
+
+  <!-- Inline SVG Favicon (Dollar & Clock Badge) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f2b5b'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23ffffff' stroke-width='3' opacity='0.28'/%3E%3Cpath d='M32 10a22 22 0 0 1 22 22' fill='none' stroke='%2310b981' stroke-width='3.5' stroke-linecap='round'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif' font-size='28' font-weight='700' fill='%23ffffff'%3E%24%3C/text%3E%3C/svg%3E" />
+
+  <!-- Structured Data: WebApplication & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "California Double Time Pay Calculator",
+        "url": "https://example.com/california-double-time-pay-calculator",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "description": "Free California overtime and double time calculator for non-exempt hourly workers, HR managers, and small businesses based on California Labor Code Section 510.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "When does double time pay start in California?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Under California Labor Code Section 510, non-exempt employees earn double time (2.0x their regular rate of pay) for all hours worked beyond 12 hours in a single workday. Double time also applies to all hours worked beyond 8 hours on the 7th consecutive workday in the same workweek."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the 7th consecutive workday rule work in California?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "If a non-exempt employee works every single day of an employer's defined 7-day workweek, the first 8 hours on the 7th consecutive day are paid at 1.5x overtime, and every hour beyond 8 hours on that 7th day is paid at 2.0x double time. The count resets at the start of the next workweek."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this California double time pay calculator include meal break penalties?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This California double time pay calculator estimates earned hourly wages for regular, overtime, and double time hours worked. If your employer fails to provide a timely, duty-free 30-minute meal period before the end of your 5th hour (or a second meal period after 10 hours), California Labor Code Section 226.7 requires an extra 1 hour of pay at your regular rate as a separate meal period premium."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are salaried employees eligible for California overtime and double time?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Being paid a salary alone does not make an employee exempt from overtime or double time. To be exempt in California, an employee must meet strict duties tests (executive, administrative, or professional) and earn at least twice the state minimum wage for full-time employment. Salaried non-exempt employees are still entitled to daily overtime and double time."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do daily overtime hours also count toward the 40-hour weekly overtime limit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. California prohibits pyramiding overtime on top of overtime. Only straight-time hours (the first 8 hours of a regular workday) count toward the 40-hour weekly threshold. Hours already paid at 1.5x daily overtime or 2.0x double time are not counted again toward the 40-hour weekly cap."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg-canvas: #ffffff;
+      --bg-subtle: #f8fafc;
+      --bg-surface-muted: #f1f5f9;
+      --border-hairline: #e2e8f0;
+      --border-strong: #cbd5e1;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #475569;
+      --navy-900: #0b1f44;
+      --navy-800: #0f2b5b;
+      --navy-700: #1e3a8a;
+      --navy-50: #eff6ff;
+      --emerald-800: #065f46;
+      --emerald-700: #047857;
+      --emerald-50: #ecfdf5;
+      --emerald-border: #a7f3d0;
+      --amber-800: #92400e;
+      --amber-50: #fffbeb;
+      --amber-border: #fde68a;
+      --danger-700: #b91c1c;
+      --danger-50: #fef2f2;
+      --danger-border: #fecaca;
+      --focus-ring: #2563eb;
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --radius-sm: 6px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-canvas);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Skip link for keyboard accessibility */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--navy-800);
+      color: #ffffff;
+      padding: 12px 16px;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      left: 16px;
+      top: 16px;
+      border-radius: var(--radius-sm);
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Bar Contract: 3 clean single-line zones */
+    .site-header {
+      background-color: var(--bg-canvas);
+      border-bottom: 1px solid var(--border-hairline);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      height: 64px;
+    }
+
+    .brand-link {
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--navy-900);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .site-nav a {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      padding: 6px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 150ms ease, border-color 150ms ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--navy-800);
+      border-bottom-color: var(--navy-800);
+      outline: none;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: var(--navy-800);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 150ms ease;
+    }
+
+    .header-cta:hover {
+      background-color: var(--navy-900);
+    }
+
+    .header-cta:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* Hero Intro */
+    .hero-section {
+      background-color: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-hairline);
+      padding: 26px 0 40px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.75rem, 3vw, 2.375rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--navy-900);
+      text-wrap: balance;
+      max-width: 38ch;
+    }
+
+    .hero-lead {
+      margin: 0 0 24px;
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+      max-width: 74ch;
+    }
+
+    /* Calculator Shell — Single-Elevation Split Surface */
+    .calculator-shell {
+      background-color: var(--bg-canvas);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+      overflow: hidden;
+    }
+
+    .calculator-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 28px;
+      background-color: var(--bg-subtle);
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .mode-tabs {
+      display: inline-flex;
+      background-color: var(--bg-surface-muted);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      gap: 4px;
+    }
+
+    .mode-tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      min-height: 42px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .mode-tab:hover {
+      color: var(--navy-900);
+    }
+
+    .mode-tab[aria-selected="true"] {
+      background-color: var(--bg-canvas);
+      color: var(--navy-900);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+    }
+
+    .mode-tab:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .toolbar-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .calculator-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      align-items: stretch;
+    }
+
+    .calc-inputs-pane {
+      padding: 24px 28px;
+      border-right: 1px solid var(--border-hairline);
+    }
+
+    .calc-results-pane {
+      padding: 24px 28px;
+      background-color: #fbfdff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    /* Form Controls */
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .field-hint {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+    }
+
+    .input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-prefix,
+    .input-suffix {
+      position: absolute;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .input-prefix {
+      left: 14px;
+    }
+
+    .input-suffix {
+      right: 14px;
+    }
+
+    .text-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+      background-color: var(--bg-canvas);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    .text-input.has-prefix {
+      padding-left: 30px;
+    }
+
+    .text-input.has-suffix {
+      padding-right: 48px;
+    }
+
+    .text-input:hover {
+      border-color: #94a3b8;
+    }
+
+    .text-input:focus {
+      outline: none;
+      border-color: var(--navy-700);
+      box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.14);
+    }
+
+    .text-input[aria-invalid="true"] {
+      border-color: var(--danger-700);
+      background-color: var(--danger-50);
+    }
+
+    /* Checkbox Control */
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-subtle);
+      cursor: pointer;
+      margin-bottom: 22px;
+      transition: border-color 150ms ease, background-color 150ms ease;
+    }
+
+    .checkbox-row:hover {
+      border-color: var(--border-strong);
+    }
+
+    .checkbox-row input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin: 2px 0 0;
+      flex-shrink: 0;
+      accent-color: var(--navy-800);
+      cursor: pointer;
+    }
+
+    .checkbox-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .checkbox-title {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .checkbox-desc {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* 7-Day Grid */
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .day-field label {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .day-field .text-input {
+      min-height: 44px;
+      padding: 8px 10px;
+      font-size: 0.9375rem;
+    }
+
+    .rule-banner {
+      display: none;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      line-height: 1.45;
+      border: 1px solid var(--amber-border);
+      background-color: var(--amber-50);
+      color: var(--amber-800);
+    }
+
+    .rule-banner.is-visible {
+      display: block;
+    }
+
+    .validation-banner {
+      display: none;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid var(--danger-border);
+      background-color: var(--danger-50);
+      color: var(--danger-700);
+    }
+
+    .validation-banner.is-visible {
+      display: block;
+    }
+
+    /* Form Action Buttons */
+    .actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 4px;
+    }
+
+    .btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, transform 100ms ease;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--navy-800);
+      color: #ffffff;
+      border: 1px solid var(--navy-800);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--navy-900);
+      border-color: var(--navy-900);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      border: 1px solid var(--border-strong);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--bg-subtle);
+      border-color: #94a3b8;
+    }
+
+    .btn-copy {
+      width: 100%;
+      background-color: var(--bg-canvas);
+      color: var(--navy-800);
+      border: 1px solid var(--navy-700);
+    }
+
+    .btn-copy:hover {
+      background-color: var(--navy-50);
+    }
+
+    .btn-copy.is-copied {
+      background-color: var(--emerald-50);
+      border-color: var(--emerald-700);
+      color: var(--emerald-800);
+    }
+
+    /* Results Breakdown Pane */
+    .results-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .results-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .results-hours-total {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-pay-block {
+      background-color: var(--emerald-50);
+      border: 1px solid var(--emerald-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-top: 14px;
+    }
+
+    .total-pay-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--emerald-800);
+      margin-bottom: 2px;
+    }
+
+    .total-pay-amount {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: clamp(2rem, 3.4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--emerald-800);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-pay-sub {
+      margin: 5px 0 0;
+      font-size: 0.8125rem;
+      color: var(--emerald-800);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .breakdown-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .breakdown-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .breakdown-item:last-child {
+      border-bottom: 0;
+    }
+
+    .tier-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tier-name {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .tier-rate {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tier-figures {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tier-pay {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .tier-pay.is-accent {
+      color: var(--navy-700);
+    }
+
+    .tier-hours {
+      display: block;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .copy-feedback {
+      min-height: 20px;
+      margin: 8px 0 0;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--emerald-800);
+      text-align: center;
+    }
+
+    /* Per-Day Breakdown Table (Weekly Mode) */
+    .weekly-breakdown-wrap {
+      display: none;
+      border-top: 1px solid var(--border-hairline);
+      padding: 20px 28px 24px;
+      background-color: var(--bg-canvas);
+    }
+
+    .weekly-breakdown-wrap.is-visible {
+      display: block;
+    }
+
+    .weekly-breakdown-heading {
+      margin: 0 0 12px;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    /* Editorial Content Sections */
+    .content-section {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .content-section.is-tinted {
+      background-color: var(--bg-subtle);
+    }
+
+    .section-inner {
+      max-width: 820px;
+    }
+
+    .section-heading {
+      margin: 0 0 14px;
+      font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--navy-900);
+      text-wrap: balance;
+    }
+
+    .section-intro {
+      margin: 0 0 24px;
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+
+    /* Responsive Tables */
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-canvas);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9375rem;
+    }
+
+    th,
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border-hairline);
+      vertical-align: top;
+    }
+
+    thead th {
+      background-color: var(--bg-subtle);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--navy-900);
+      white-space: nowrap;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .num-col {
+      text-align: right;
+      font-family: var(--font-sans);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .rules-footnote {
+      margin: 18px 0 0;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    /* Real-World Pay Example */
+    .example-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .example-copy p {
+      margin: 0 0 14px;
+      color: var(--text-secondary);
+    }
+
+    .example-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .example-ledger {
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-canvas);
+      padding: 22px 24px;
+    }
+
+    .ledger-title {
+      margin: 0 0 4px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .ledger-meta {
+      margin: 0 0 16px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .ledger-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-hairline);
+      font-size: 0.9375rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ledger-row.is-total {
+      border-bottom: 0;
+      border-top: 2px solid var(--navy-900);
+      margin-top: 6px;
+      padding-top: 14px;
+      font-weight: 700;
+      color: var(--emerald-800);
+    }
+
+    .ledger-val {
+      font-family: var(--font-sans);
+      font-variant-numeric: tabular-nums;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* FAQ Accordion using Native <details> & <summary> */
+    .faq-list {
+      border-top: 1px solid var(--border-hairline);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 0;
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: var(--navy-900);
+      cursor: pointer;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 180ms ease;
+    }
+
+    .faq-item[open] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 0 20px;
+      color: var(--text-secondary);
+      max-width: 70ch;
+    }
+
+    .faq-answer p {
+      margin: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      background-color: var(--bg-canvas);
+      padding: 36px 0 44px;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 820px;
+    }
+
+    .footer-brand {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--navy-900);
+    }
+
+    .footer-disclaimer {
+      margin: 0;
+      font-size: 0.875rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .footer-meta {
+      margin: 0;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .is-hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 960px) {
+      .calculator-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-inputs-pane {
+        border-right: 0;
+        border-bottom: 1px solid var(--border-hairline);
+      }
+
+      .example-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .header-inner {
+        height: 56px;
+        gap: 12px;
+      }
+
+      .site-nav {
+        display: none;
+      }
+
+      .hero-section {
+        padding: 20px 0 32px;
+      }
+
+      .hero-meta {
+        font-size: 0.8125rem;
+        gap: 6px;
+      }
+
+      .hero-meta-extra {
+        display: none;
+      }
+
+      .calculator-toolbar,
+      .calc-inputs-pane,
+      .calc-results-pane,
+      .weekly-breakdown-wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .mode-tabs {
+        width: 100%;
+      }
+
+      .mode-tab {
+        flex: 1;
+        padding: 10px 8px;
+        font-size: 0.84375rem;
+      }
+
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      .week-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .actions-row .btn {
+        flex: 1;
+      }
+
+      .content-section {
+        padding: 40px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#calculator" class="skip-link">Skip to calculator</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand-link">California Wage Calculator</a>
+      <nav class="site-nav" aria-label="Page sections">
+        <a href="#calculator">Calculator</a>
+        <a href="#how-it-works">Pay Rules</a>
+        <a href="#pay-example">Pay Example</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a href="#calculator" class="header-cta">Calculate Pay</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero-section" aria-labelledby="page-title">
+      <div class="container">
+        <div class="hero-meta">
+          <span>California Labor Code § 510</span>
+          <span aria-hidden="true">·</span>
+          <span>Non-Exempt Hourly Pay</span>
+          <span class="hero-meta-extra" aria-hidden="true">·</span>
+          <span class="hero-meta-extra">Daily, Weekly &amp; 7th-Day Rules</span>
+        </div>
+
+        <h1 id="page-title" class="hero-title">California Double Time Pay Calculator</h1>
+
+        <p class="hero-lead">
+          Use this free California double time pay calculator to check gross earnings for long shifts and full workweeks. Built around California Labor Code § 510, our California overtime and double time calculator splits your hours into straight time (1.0x), overtime (1.5x), and double time (2.0x)—including the automatic 7th consecutive workday rule.
+        </p>
+
+        <section id="calculator" class="calculator-shell" aria-label="California overtime and double time calculator">
+          <div class="calculator-toolbar">
+            <div class="mode-tabs" role="tablist" aria-label="Calculation mode">
+              <button
+                type="button"
+                id="tab-daily"
+                class="mode-tab"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-daily"
+              >
+                Single Shift (Daily)
+              </button>
+              <button
+                type="button"
+                id="tab-weekly"
+                class="mode-tab"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-weekly"
+              >
+                Full Workweek (7-Day)
+              </button>
+            </div>
+            <p class="toolbar-note" id="mode-summary-note">Updates live as you enter rate and hours</p>
+          </div>
+
+          <div class="calculator-grid">
+            <div class="calc-inputs-pane">
+              <form id="payroll-form" novalidate>
+                <div id="validation-banner" class="validation-banner" role="alert" aria-live="assertive"></div>
+
+                <!-- Single Shift (Daily) Panel -->
+                <div id="panel-daily" role="tabpanel" aria-labelledby="tab-daily">
+                  <div class="field-row">
+                    <div class="field-group">
+                      <label for="daily-rate" class="field-label">Regular Hourly Rate ($)</label>
+                      <div class="input-wrap">
+                        <span class="input-prefix" aria-hidden="true">$</span>
+                        <input
+                          type="number"
+                          id="daily-rate"
+                          name="dailyRate"
+                          class="text-input has-prefix"
+                          min="0"
+                          max="10000"
+                          step="0.01"
+                          inputmode="decimal"
+                          value="22.00"
+                          placeholder="22.00"
+                          aria-describedby="daily-rate-hint"
+                        />
+                      </div>
+                      <span id="daily-rate-hint" class="field-hint">Base hourly rate before overtime</span>
+                    </div>
+
+                    <div class="field-group">
+                      <label for="daily-hours" class="field-label">Total Hours Worked Today</label>
+                      <div class="input-wrap">
+                        <input
+                          type="number"
+                          id="daily-hours"
+                          name="dailyHours"
+                          class="text-input has-suffix"
+                          min="0"
+                          max="24"
+                          step="0.25"
+                          inputmode="decimal"
+                          value="14"
+                          placeholder="0.00"
+                          aria-describedby="daily-hours-hint"
+                        />
+                        <span class="input-suffix" aria-hidden="true">hrs</span>
+                      </div>
+                      <span id="daily-hours-hint" class="field-hint">Enter 0 to 24 hours (decimals ok)</span>
+                    </div>
+                  </div>
+
+                  <label class="checkbox-row" for="seventh-day-checkbox">
+                    <input type="checkbox" id="seventh-day-checkbox" name="isSeventhDay" />
+                    <span class="checkbox-text">
+                      <span class="checkbox-title">Is this your 7th consecutive workday in the workweek?</span>
+                      <span class="checkbox-desc">First 8 hours pay 1.5x overtime; hours over 8 pay 2.0x double time.</span>
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Full Workweek (7-Day) Panel -->
+                <div id="panel-weekly" class="is-hidden" role="tabpanel" aria-labelledby="tab-weekly">
+                  <div class="field-group">
+                    <label for="weekly-rate" class="field-label">Regular Hourly Rate ($)</label>
+                    <div class="input-wrap">
+                      <span class="input-prefix" aria-hidden="true">$</span>
+                      <input
+                        type="number"
+                        id="weekly-rate"
+                        name="weeklyRate"
+                        class="text-input has-prefix"
+                        min="0"
+                        max="10000"
+                        step="0.01"
+                        inputmode="decimal"
+                        value="22.00"
+                        placeholder="22.00"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="field-group">
+                    <span class="field-label" id="weekly-hours-label">Hours Worked Each Day (Day 1 to Day 7)</span>
+                    <div class="week-grid" role="group" aria-labelledby="weekly-hours-label">
+                      <div class="day-field">
+                        <label for="day-1">Day 1</label>
+                        <input type="number" id="day-1" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-2">Day 2</label>
+                        <input type="number" id="day-2" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-3">Day 3</label>
+                        <input type="number" id="day-3" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-4">Day 4</label>
+                        <input type="number" id="day-4" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-5">Day 5</label>
+                        <input type="number" id="day-5" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-6">Day 6</label>
+                        <input type="number" id="day-6" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="8" placeholder="0" />
+                      </div>
+                      <div class="day-field">
+                        <label for="day-7">Day 7</label>
+                        <input type="number" id="day-7" class="text-input day-hour-input" min="0" max="24" step="0.25" inputmode="decimal" value="0" placeholder="0" />
+                      </div>
+                    </div>
+                    <span class="field-hint">Enter hours in order across your employer's 7-day workweek. If all 7 days have hours greater than 0, Day 7 automatically uses the 7th consecutive workday rule.</span>
+                  </div>
+
+                  <div id="seventh-day-auto-banner" class="rule-banner" role="status" aria-live="polite">
+                    <strong>7th Consecutive Workday Rule Active:</strong> Hours were entered on all 7 days. On Day 7, the first 8 hours are calculated at 1.5x overtime and hours over 8 at 2.0x double time.
+                  </div>
+                </div>
+
+                <div class="actions-row">
+                  <button type="submit" id="btn-calculate" class="btn btn-primary">Calculate</button>
+                  <button type="button" id="btn-reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Live Output Breakdown Pane -->
+            <div class="calc-results-pane" aria-live="polite" aria-atomic="false">
+              <div>
+                <div class="results-header">
+                  <h2 class="results-title" id="results-heading">Shift Pay Breakdown</h2>
+                  <span class="results-hours-total" id="out-total-hours">14.00 total hrs</span>
+                </div>
+
+                <div class="total-pay-block">
+                  <span class="total-pay-label">Total Gross Pay</span>
+                  <span class="total-pay-amount" id="out-total-pay">$396.00</span>
+                  <p class="total-pay-sub" id="out-effective-rate">Effective rate: $28.29/hr before taxes</p>
+                </div>
+
+                <ul class="breakdown-list" aria-label="Pay tier breakdown">
+                  <li class="breakdown-item">
+                    <div class="tier-info">
+                      <span class="tier-name">Regular Pay (1.0x)</span>
+                      <span class="tier-rate" id="out-reg-rate">$22.00/hr</span>
+                    </div>
+                    <div class="tier-figures">
+                      <span class="tier-pay" id="out-reg-pay">$176.00</span>
+                      <span class="tier-hours" id="out-reg-hours">8.00 hrs</span>
+                    </div>
+                  </li>
+                  <li class="breakdown-item">
+                    <div class="tier-info">
+                      <span class="tier-name">Overtime Pay (1.5x)</span>
+                      <span class="tier-rate" id="out-ot-rate">$33.00/hr</span>
+                    </div>
+                    <div class="tier-figures">
+                      <span class="tier-pay is-accent" id="out-ot-pay">$132.00</span>
+                      <span class="tier-hours" id="out-ot-hours">4.00 hrs</span>
+                    </div>
+                  </li>
+                  <li class="breakdown-item">
+                    <div class="tier-info">
+                      <span class="tier-name">Double Time Pay (2.0x)</span>
+                      <span class="tier-rate" id="out-dt-rate">$44.00/hr</span>
+                    </div>
+                    <div class="tier-figures">
+                      <span class="tier-pay is-accent" id="out-dt-pay">$88.00</span>
+                      <span class="tier-hours" id="out-dt-hours">2.00 hrs</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <button type="button" id="btn-copy" class="btn btn-copy">Copy Summary</button>
+                <p id="copy-feedback" class="copy-feedback" role="status" aria-live="polite"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day-by-Day Audit Table (Shown in Full Workweek Mode) -->
+          <div id="weekly-breakdown-wrap" class="weekly-breakdown-wrap">
+            <h3 class="weekly-breakdown-heading">Day-by-Day Hours &amp; Pay Breakdown</h3>
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Workday</th>
+                    <th scope="col" class="num-col">Total Hrs</th>
+                    <th scope="col" class="num-col">Regular (1.0x)</th>
+                    <th scope="col" class="num-col">Overtime (1.5x)</th>
+                    <th scope="col" class="num-col">Double Time (2.0x)</th>
+                    <th scope="col" class="num-col">Daily Gross</th>
+                  </tr>
+                </thead>
+                <tbody id="weekly-breakdown-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Section 1: How California Double Time Works -->
+    <section id="how-it-works" class="content-section" aria-labelledby="rules-heading">
+      <div class="container">
+        <div class="section-inner">
+          <h2 id="rules-heading" class="section-heading">How This California Overtime and Double Time Calculator Works</h2>
+          <p class="section-intro">
+            Unlike federal law, which only looks at a 40-hour workweek, California calculates overtime on both a daily and a weekly clock. This California overtime and double time calculator applies all three statutory thresholds in the exact order required by the California Division of Labor Standards Enforcement (DLSE).
+          </p>
+
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Pay Tier</th>
+                  <th scope="col">Multiplier</th>
+                  <th scope="col">Standard Workday (Days 1–6)</th>
+                  <th scope="col">7th Consecutive Workday</th>
+                  <th scope="col">Weekly Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Regular Pay</strong></td>
+                  <td class="num-col">1.0x</td>
+                  <td>First 8 hours worked</td>
+                  <td>None (0 straight-time hours)</td>
+                  <td>Up to 40 straight-time hours per workweek</td>
+                </tr>
+                <tr>
+                  <td><strong>Overtime Pay</strong></td>
+                  <td class="num-col">1.5x</td>
+                  <td>Hours over 8, up to 12 hours</td>
+                  <td>First 8 hours worked</td>
+                  <td>Straight-time hours beyond 40 in a workweek</td>
+                </tr>
+                <tr>
+                  <td><strong>Double Time Pay</strong></td>
+                  <td class="num-col">2.0x</td>
+                  <td>All hours worked beyond 12</td>
+                  <td>All hours worked beyond 8</td>
+                  <td>Triggered daily or on Day 7, not by weekly total alone</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="rules-footnote">
+            <strong>No pyramiding rule:</strong> Hours that already qualify for daily overtime (1.5x) or double time (2.0x) are not counted again toward the 40-hour weekly overtime cap. Only regular 1.0x hours accumulate toward 40 hours in a workweek.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Real-World Pay Example -->
+    <section id="pay-example" class="content-section is-tinted" aria-labelledby="example-heading">
+      <div class="container">
+        <article class="example-layout">
+          <div class="example-copy">
+            <h2 id="example-heading" class="section-heading">Real-World Pay Example: 14-Hour Shift at $22/Hour</h2>
+            <p>
+              Suppose a non-exempt warehouse technician in California earns <strong>$22.00 per hour</strong> and works a single <strong>14-hour shift</strong> on a standard workday (not their 7th consecutive day).
+            </p>
+            <p>
+              Under California Labor Code § 510, payroll cannot pay all 6 extra hours at 1.5x. Once the shift passes the 12-hour mark, the remaining 2 hours jump to 2.0x double time.
+            </p>
+            <p>
+              On a standard 8-hour shift at $22/hour, this employee earns $176.00. Working 6 extra hours brings the shift total to <strong>$396.00 gross</strong>—an effective rate of $28.29 per hour before tax withholdings.
+            </p>
+          </div>
+
+          <div class="example-ledger" aria-label="Sample 14-hour shift calculation">
+            <h3 class="ledger-title">Sample Shift Breakdown</h3>
+            <p class="ledger-meta">$22.00/hr base rate · 14.00 hours worked · Standard day</p>
+
+            <div class="ledger-row">
+              <span>Regular (1.0x): 8 hrs &times; $22.00</span>
+              <span class="ledger-val">$176.00</span>
+            </div>
+            <div class="ledger-row">
+              <span>Overtime (1.5x): 4 hrs &times; $33.00</span>
+              <span class="ledger-val">$132.00</span>
+            </div>
+            <div class="ledger-row">
+              <span>Double Time (2.0x): 2 hrs &times; $44.00</span>
+              <span class="ledger-val">$88.00</span>
+            </div>
+            <div class="ledger-row is-total">
+              <span>Total Gross Shift Pay</span>
+              <span class="ledger-val">$396.00</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 3: Frequently Asked Questions -->
+    <section id="faq" class="content-section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-inner">
+          <h2 id="faq-heading" class="section-heading">Frequently Asked Questions</h2>
+          <p class="section-intro">
+            Quick answers to common payroll questions California hourly employees, supervisors, and small business owners run into when checking timesheets.
+          </p>
+
+          <div class="faq-list">
+            <details class="faq-item" open>
+              <summary>
+                <span>When does double time pay start in California?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Double time (2.0x your regular rate of pay) starts after 12 hours worked in a single workday. It also starts after 8 hours worked on the 7th consecutive workday within the same employer-defined workweek.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>How does the 7th consecutive workday rule work?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  If you work at least some time on all 7 days of your employer's established 7-day workweek (for example, Monday through Sunday), the 7th day has no regular 1.0x rate. The first 8 hours on Day 7 are paid at 1.5x overtime, and any time past 8 hours is paid at 2.0x double time. Note that working 7 days in a row across two different workweeks does not trigger this rule—all 7 days must fall inside one workweek.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Does this California double time pay calculator include meal break penalties?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  No. This California double time pay calculator totals earned hourly wages for hours worked. Under California Labor Code § 226.7, non-exempt employees are owed an uninterrupted, unpaid 30-minute meal period before the end of the 5th hour of work, and a second 30-minute meal period when working more than 10 hours. If an employer fails to provide a compliant meal break, they owe 1 extra hour of pay at your regular rate as a separate premium line on your paycheck.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Are salaried employees eligible for California overtime and double time?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Often yes. Receiving a fixed salary does not automatically make someone exempt from overtime. To qualify as exempt in California, an employee must spend more than half their time on exempt executive, administrative, or professional duties and earn a salary equal to at least twice the state minimum wage for full-time work. Salaried employees who do not meet both tests are non-exempt and must be paid daily overtime and double time.
+                </p>
+              </div>
+            </details>
+
+            <details class="faq-item">
+              <summary>
+                <span>Do alternative workweek schedules (like four 10-hour days) change double time?</span>
+                <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Yes, if your workplace adopted a valid Alternative Workweek Schedule (AWS) through a secret-ballot election filed with the California DIR. Under a valid 4/10 AWS, hours 9 and 10 are paid at regular 1.0x pay instead of 1.5x, hours 11 and 12 are paid at 1.5x, and hours beyond 12 still require 2.0x double time. This calculator uses standard non-AWS California Labor Code § 510 rules.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">California Wage Calculator</div>
+      <p class="footer-disclaimer">
+        Disclaimer: This calculator provides gross pay estimates based on standard California Labor Code § 510 overtime and double time rules for non-exempt employees. Actual paychecks may differ due to tax withholdings, shift differentials, nondiscretionary bonuses affecting the regular rate of pay, approved Alternative Workweek Schedules, collective bargaining agreements, or local ordinances. This tool is for informational purposes only and is not legal or tax advice.
+      </p>
+      <p class="footer-meta">Reference: California Labor Code § 510 · California Department of Industrial Relations (DIR)</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      /**
+       * Pure California Labor Code § 510 Single-Shift Calculation
+       * Standard day: 0-8 hrs @ 1.0x, >8-12 hrs @ 1.5x, >12 hrs @ 2.0x
+       * 7th consecutive day: 0-8 hrs @ 1.5x, >8 hrs @ 2.0x
+       */
+      function calculateDailyShift(rate, hours, isSeventhDay) {
+        var safeRate = Number.isFinite(rate) && rate > 0 ? rate : 0;
+        var safeHours = Number.isFinite(hours) && hours > 0 ? hours : 0;
+
+        var regularHours = 0;
+        var overtimeHours = 0;
+        var doubleTimeHours = 0;
+
+        if (isSeventhDay) {
+          overtimeHours = Math.min(safeHours, 8);
+          doubleTimeHours = Math.max(safeHours - 8, 0);
+        } else {
+          regularHours = Math.min(safeHours, 8);
+          overtimeHours = Math.min(Math.max(safeHours - 8, 0), 4);
+          doubleTimeHours = Math.max(safeHours - 12, 0);
+        }
+
+        var regularPay = regularHours * safeRate;
+        var overtimePay = overtimeHours * safeRate * 1.5;
+        var doubleTimePay = doubleTimeHours * safeRate * 2.0;
+        var totalPay = regularPay + overtimePay + doubleTimePay;
+
+        return {
+          rate: safeRate,
+          totalHours: safeHours,
+          isSeventhDay: Boolean(isSeventhDay),
+          regularHours: regularHours,
+          overtimeHours: overtimeHours,
+          doubleTimeHours: doubleTimeHours,
+          regularPay: regularPay,
+          overtimePay: overtimePay,
+          doubleTimePay: doubleTimePay,
+          totalPay: totalPay
+        };
+      }
+
+      /**
+       * Pure California Labor Code § 510 Full 7-Day Workweek Calculation
+       * - Daily OT (>8 up to 12) & Daily Double Time (>12)
+       * - Auto-detects 7th consecutive workday when all 7 days have hours > 0
+       * - Weekly OT (>40 straight-time hours) without pyramiding daily OT/DT
+       */
+      function calculateWeeklyPay(rate, dailyHoursList) {
+        var safeRate = Number.isFinite(rate) && rate > 0 ? rate : 0;
+        var days = [];
+        for (var i = 0; i < 7; i++) {
+          var raw = dailyHoursList && dailyHoursList[i] !== undefined ? dailyHoursList[i] : 0;
+          days.push(Number.isFinite(raw) && raw > 0 ? raw : 0);
+        }
+
+        var isSeventhConsecutiveDay = days.every(function (h) {
+          return h > 0;
+        });
+
+        var runningRegular = 0;
+        var totalHours = 0;
+        var totalRegularHours = 0;
+        var totalOvertimeHours = 0;
+        var totalDoubleTimeHours = 0;
+        var breakdown = [];
+
+        for (var d = 0; d < 7; d++) {
+          var hrs = days[d];
+          var isDay7Rule = d === 6 && isSeventhConsecutiveDay;
+
+          var candidateReg = 0;
+          var dailyOT = 0;
+          var dailyDT = 0;
+
+          if (isDay7Rule) {
+            dailyOT = Math.min(hrs, 8);
+            dailyDT = Math.max(hrs - 8, 0);
+          } else {
+            candidateReg = Math.min(hrs, 8);
+            dailyOT = Math.min(Math.max(hrs - 8, 0), 4);
+            dailyDT = Math.max(hrs - 12, 0);
+          }
+
+          var remainingStraight = Math.max(40 - runningRegular, 0);
+          var dayRegular = Math.min(candidateReg, remainingStraight);
+          var weeklyOTAdded = candidateReg - dayRegular;
+          var dayOvertime = dailyOT + weeklyOTAdded;
+
+          runningRegular += dayRegular;
+
+          var dayPay = (dayRegular * safeRate) + (dayOvertime * safeRate * 1.5) + (dailyDT * safeRate * 2.0);
+
+          totalHours += hrs;
+          totalRegularHours += dayRegular;
+          totalOvertimeHours += dayOvertime;
+          totalDoubleTimeHours += dailyDT;
+
+          breakdown.push({
+            dayNumber: d + 1,
+            isSeventhDayRule: isDay7Rule,
+            totalHours: hrs,
+            regularHours: dayRegular,
+            overtimeHours: dayOvertime,
+            doubleTimeHours: dailyDT,
+            grossPay: dayPay
+          });
+        }
+
+        var regularPay = totalRegularHours * safeRate;
+        var overtimePay = totalOvertimeHours * safeRate * 1.5;
+        var doubleTimePay = totalDoubleTimeHours * safeRate * 2.0;
+        var totalPay = regularPay + overtimePay + doubleTimePay;
+
+        return {
+          rate: safeRate,
+          totalHours: totalHours,
+          isSeventhConsecutiveDay: isSeventhConsecutiveDay,
+          regularHours: totalRegularHours,
+          overtimeHours: totalOvertimeHours,
+          doubleTimeHours: totalDoubleTimeHours,
+          regularPay: regularPay,
+          overtimePay: overtimePay,
+          doubleTimePay: doubleTimePay,
+          totalPay: totalPay,
+          days: breakdown
+        };
+      }
+
+      // Expose pure functions for automated verification if running in a headless harness
+      if (typeof globalThis !== 'undefined') {
+        globalThis.__CA_PAYROLL_CALC__ = {
+          calculateDailyShift: calculateDailyShift,
+          calculateWeeklyPay: calculateWeeklyPay
+        };
+      }
+
+      // Guard DOM wiring so pure calculation logic can also be tested outside a DOM
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      var currencyFmt = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      function formatMoney(amount) {
+        return currencyFmt.format(Number.isFinite(amount) ? amount : 0);
+      }
+
+      function formatHours(hrs) {
+        return (Number.isFinite(hrs) ? hrs : 0).toFixed(2) + ' hrs';
+      }
+
+      function parseNumericInput(inputEl, maxVal, fieldLabel) {
+        var raw = inputEl.value.trim();
+        if (raw === '') {
+          inputEl.setAttribute('aria-invalid', 'false');
+          return { value: 0, error: null };
+        }
+        var num = Number(raw);
+        if (!Number.isFinite(num) || num < 0) {
+          inputEl.setAttribute('aria-invalid', 'true');
+          return { value: 0, error: fieldLabel + ' must be 0 or greater.' };
+        }
+        if (maxVal !== null && num > maxVal) {
+          inputEl.setAttribute('aria-invalid', 'true');
+          return { value: maxVal, error: fieldLabel + ' cannot exceed ' + maxVal + '.' };
+        }
+        inputEl.setAttribute('aria-invalid', 'false');
+        return { value: num, error: null };
+      }
+
+      // DOM References
+      var activeMode = 'daily';
+      var lastSummaryText = '';
+      var copyResetTimer = null;
+
+      var tabDaily = document.getElementById('tab-daily');
+      var tabWeekly = document.getElementById('tab-weekly');
+      var panelDaily = document.getElementById('panel-daily');
+      var panelWeekly = document.getElementById('panel-weekly');
+      var formEl = document.getElementById('payroll-form');
+      var validationBanner = document.getElementById('validation-banner');
+
+      var dailyRateInput = document.getElementById('daily-rate');
+      var dailyHoursInput = document.getElementById('daily-hours');
+      var seventhDayCheckbox = document.getElementById('seventh-day-checkbox');
+
+      var weeklyRateInput = document.getElementById('weekly-rate');
+      var dayInputs = Array.prototype.slice.call(document.querySelectorAll('.day-hour-input'));
+      var seventhDayAutoBanner = document.getElementById('seventh-day-auto-banner');
+
+      var resultsHeading = document.getElementById('results-heading');
+      var outTotalHours = document.getElementById('out-total-hours');
+      var outTotalPay = document.getElementById('out-total-pay');
+      var outEffectiveRate = document.getElementById('out-effective-rate');
+      var outRegRate = document.getElementById('out-reg-rate');
+      var outOtRate = document.getElementById('out-ot-rate');
+      var outDtRate = document.getElementById('out-dt-rate');
+      var outRegPay = document.getElementById('out-reg-pay');
+      var outOtPay = document.getElementById('out-ot-pay');
+      var outDtPay = document.getElementById('out-dt-pay');
+      var outRegHours = document.getElementById('out-reg-hours');
+      var outOtHours = document.getElementById('out-ot-hours');
+      var outDtHours = document.getElementById('out-dt-hours');
+
+      var weeklyBreakdownWrap = document.getElementById('weekly-breakdown-wrap');
+      var weeklyBreakdownBody = document.getElementById('weekly-breakdown-body');
+
+      var btnReset = document.getElementById('btn-reset');
+      var btnCopy = document.getElementById('btn-copy');
+      var copyFeedback = document.getElementById('copy-feedback');
+
+      function showValidationError(message) {
+        if (message) {
+          validationBanner.textContent = message;
+          validationBanner.classList.add('is-visible');
+        } else {
+          validationBanner.textContent = '';
+          validationBanner.classList.remove('is-visible');
+        }
+      }
+
+      function buildSummaryText(mode, res) {
+        var lines = [];
+        if (mode === 'daily') {
+          lines.push('California Shift Pay Summary (Labor Code § 510)');
+          lines.push('Mode: Single Shift' + (res.isSeventhDay ? ' (7th Consecutive Workday)' : ''));
+        } else {
+          lines.push('California Workweek Pay Summary (Labor Code § 510)');
+          lines.push('Mode: Full 7-Day Workweek' + (res.isSeventhConsecutiveDay ? ' (7th Consecutive Day Rule Applied)' : ''));
+        }
+        lines.push('Base Rate: ' + formatMoney(res.rate) + '/hr');
+        lines.push('Total Hours: ' + res.totalHours.toFixed(2) + ' hrs');
+        lines.push('----------------------------------------');
+        lines.push('Regular (1.0x): ' + res.regularHours.toFixed(2) + ' hrs = ' + formatMoney(res.regularPay));
+        lines.push('Overtime (1.5x): ' + res.overtimeHours.toFixed(2) + ' hrs = ' + formatMoney(res.overtimePay));
+        lines.push('Double Time (2.0x): ' + res.doubleTimeHours.toFixed(2) + ' hrs = ' + formatMoney(res.doubleTimePay));
+        lines.push('----------------------------------------');
+        lines.push('Total Gross Pay: ' + formatMoney(res.totalPay));
+        return lines.join('\n');
+      }
+
+      function renderOutput(res, mode) {
+        resultsHeading.textContent = mode === 'daily' ? 'Shift Pay Breakdown' : 'Workweek Pay Breakdown';
+        outTotalHours.textContent = res.totalHours.toFixed(2) + ' total hrs';
+        outTotalPay.textContent = formatMoney(res.totalPay);
+
+        if (res.totalHours > 0 && res.rate > 0) {
+          var effective = res.totalPay / res.totalHours;
+          outEffectiveRate.textContent = 'Effective rate: ' + formatMoney(effective) + '/hr before taxes';
+        } else {
+          outEffectiveRate.textContent = 'Enter hourly rate and hours to calculate gross pay';
+        }
+
+        outRegRate.textContent = formatMoney(res.rate) + '/hr';
+        outOtRate.textContent = formatMoney(res.rate * 1.5) + '/hr';
+        outDtRate.textContent = formatMoney(res.rate * 2.0) + '/hr';
+
+        outRegPay.textContent = formatMoney(res.regularPay);
+        outOtPay.textContent = formatMoney(res.overtimePay);
+        outDtPay.textContent = formatMoney(res.doubleTimePay);
+
+        outRegHours.textContent = formatHours(res.regularHours);
+        outOtHours.textContent = formatHours(res.overtimeHours);
+        outDtHours.textContent = formatHours(res.doubleTimeHours);
+
+        lastSummaryText = buildSummaryText(mode, res);
+      }
+
+      function renderWeeklyTable(days) {
+        weeklyBreakdownBody.textContent = '';
+        for (var i = 0; i < days.length; i++) {
+          var rowData = days[i];
+          var tr = document.createElement('tr');
+
+          var tdDay = document.createElement('td');
+          tdDay.textContent = 'Day ' + rowData.dayNumber + (rowData.isSeventhDayRule ? ' (7th-Day Rule)' : '');
+          tr.appendChild(tdDay);
+
+          var cells = [
+            rowData.totalHours.toFixed(2),
+            rowData.regularHours.toFixed(2),
+            rowData.overtimeHours.toFixed(2),
+            rowData.doubleTimeHours.toFixed(2),
+            formatMoney(rowData.grossPay)
+          ];
+
+          for (var c = 0; c < cells.length; c++) {
+            var td = document.createElement('td');
+            td.className = 'num-col';
+            td.textContent = cells[c];
+            tr.appendChild(td);
+          }
+
+          weeklyBreakdownBody.appendChild(tr);
+        }
+      }
+
+      function updateCalculation() {
+        var firstError = null;
+
+        if (activeMode === 'daily') {
+          var rateParsed = parseNumericInput(dailyRateInput, 10000, 'Regular Hourly Rate');
+          var hoursParsed = parseNumericInput(dailyHoursInput, 24, 'Total Hours Worked Today');
+          firstError = rateParsed.error || hoursParsed.error;
+          showValidationError(firstError);
+
+          var dailyRes = calculateDailyShift(
+            rateParsed.value,
+            hoursParsed.value,
+            seventhDayCheckbox.checked
+          );
+          renderOutput(dailyRes, 'daily');
+          weeklyBreakdownWrap.classList.remove('is-visible');
+        } else {
+          var wRateParsed = parseNumericInput(weeklyRateInput, 10000, 'Regular Hourly Rate');
+          if (wRateParsed.error) {
+            firstError = wRateParsed.error;
+          }
+
+          var hoursArr = [];
+          for (var i = 0; i < dayInputs.length; i++) {
+            var parsed = parseNumericInput(dayInputs[i], 24, 'Day ' + (i + 1) + ' hours');
+            if (!firstError && parsed.error) {
+              firstError = parsed.error;
+            }
+            hoursArr.push(parsed.value);
+          }
+
+          showValidationError(firstError);
+
+          var weeklyRes = calculateWeeklyPay(wRateParsed.value, hoursArr);
+          if (weeklyRes.isSeventhConsecutiveDay) {
+            seventhDayAutoBanner.classList.add('is-visible');
+          } else {
+            seventhDayAutoBanner.classList.remove('is-visible');
+          }
+
+          renderOutput(weeklyRes, 'weekly');
+          renderWeeklyTable(weeklyRes.days);
+          weeklyBreakdownWrap.classList.add('is-visible');
+        }
+      }
+
+      function switchMode(newMode) {
+        if (newMode === activeMode) {
+          return;
+        }
+        // Keep hourly rate synced between modes when switching
+        if (newMode === 'weekly' && dailyRateInput.value.trim() !== '') {
+          weeklyRateInput.value = dailyRateInput.value;
+        } else if (newMode === 'daily' && weeklyRateInput.value.trim() !== '') {
+          dailyRateInput.value = weeklyRateInput.value;
+        }
+
+        activeMode = newMode;
+        var isDaily = activeMode === 'daily';
+
+        tabDaily.setAttribute('aria-selected', isDaily ? 'true' : 'false');
+        tabWeekly.setAttribute('aria-selected', isDaily ? 'false' : 'true');
+        panelDaily.classList.toggle('is-hidden', !isDaily);
+        panelWeekly.classList.toggle('is-hidden', isDaily);
+
+        copyFeedback.textContent = '';
+        updateCalculation();
+      }
+
+      function handleReset() {
+        showValidationError(null);
+        copyFeedback.textContent = '';
+        btnCopy.classList.remove('is-copied');
+        btnCopy.textContent = 'Copy Summary';
+
+        if (activeMode === 'daily') {
+          dailyRateInput.value = '';
+          dailyHoursInput.value = '';
+          seventhDayCheckbox.checked = false;
+          dailyRateInput.setAttribute('aria-invalid', 'false');
+          dailyHoursInput.setAttribute('aria-invalid', 'false');
+          dailyRateInput.focus();
+        } else {
+          weeklyRateInput.value = '';
+          weeklyRateInput.setAttribute('aria-invalid', 'false');
+          for (var i = 0; i < dayInputs.length; i++) {
+            dayInputs[i].value = '';
+            dayInputs[i].setAttribute('aria-invalid', 'false');
+          }
+          weeklyRateInput.focus();
+        }
+
+        updateCalculation();
+      }
+
+      function fallbackCopyText(text) {
+        var textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        var copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch (err) {
+          copied = false;
+        }
+        document.body.removeChild(textarea);
+        return copied;
+      }
+
+      function showCopiedState(success) {
+        if (copyResetTimer) {
+          clearTimeout(copyResetTimer);
+        }
+        if (success) {
+          btnCopy.classList.add('is-copied');
+          btnCopy.textContent = 'Summary Copied';
+          copyFeedback.textContent = 'Pay breakdown copied to your clipboard.';
+        } else {
+          copyFeedback.textContent = 'Unable to copy automatically. Please select and copy the figures above.';
+        }
+        copyResetTimer = setTimeout(function () {
+          btnCopy.classList.remove('is-copied');
+          btnCopy.textContent = 'Copy Summary';
+        }, 2400);
+      }
+
+      function handleCopy() {
+        if (!lastSummaryText) {
+          return;
+        }
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(lastSummaryText).then(
+            function () {
+              showCopiedState(true);
+            },
+            function () {
+              showCopiedState(fallbackCopyText(lastSummaryText));
+            }
+          );
+        } else {
+          showCopiedState(fallbackCopyText(lastSummaryText));
+        }
+      }
+
+      // Event Listeners
+      tabDaily.addEventListener('click', function () {
+        switchMode('daily');
+      });
+
+      tabWeekly.addEventListener('click', function () {
+        switchMode('weekly');
+      });
+
+      // Keyboard arrow support for ARIA tabs
+      [tabDaily, tabWeekly].forEach(function (tab) {
+        tab.addEventListener('keydown', function (e) {
+          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            var nextMode = activeMode === 'daily' ? 'weekly' : 'daily';
+            switchMode(nextMode);
+            (nextMode === 'daily' ? tabDaily : tabWeekly).focus();
+          }
+        });
+      });
+
+      formEl.addEventListener('submit', function (e) {
+        e.preventDefault();
+        updateCalculation();
+      });
+
+      dailyRateInput.addEventListener('input', updateCalculation);
+      dailyHoursInput.addEventListener('input', updateCalculation);
+      seventhDayCheckbox.addEventListener('change', updateCalculation);
+      weeklyRateInput.addEventListener('input', updateCalculation);
+
+      dayInputs.forEach(function (input) {
+        input.addEventListener('input', updateCalculation);
+      });
+
+      btnReset.addEventListener('click', handleReset);
+      btnCopy.addEventListener('click', handleCopy);
+
+      // Initial calculation on page load
+      updateCalculation();
+    })();
+  </script>
+</body>
+</html>
